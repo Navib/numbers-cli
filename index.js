@@ -1,5 +1,3 @@
-function add(a, b) {
-  return a + b;
-}
+const cli = require("./cli");
 
-module.exports = add;
+module.exports = cli;

@@ -10,23 +10,34 @@ const prompt = require("./lib/prompt");
 // }
 
 const { promptDate } = prompt;
-figlet.text(
-  "Numbers",
-  {
-    horizontalLayout: "default",
-    verticalLayout: "default"
-  },
-  function(err, data) {
-    if (err) {
-      console.log("Something went wrong...");
-      console.dir(err);
-      return;
-    }
 
-    try {
-      promptDate();
-    } catch (err) {
-      throw err;
-    }
+function app() {
+  try {
+    promptDate();
+  } catch (err) {
+    throw err;
   }
-);
+}
+function cli() {
+  figlet.text(
+    "Dates",
+    {
+      font: "Peaks",
+      horizontalLayout: "default",
+      verticalLayout: "default"
+    },
+    function(err, data) {
+      if (err) {
+        console.log("Something went wrong...");
+        console.dir(err);
+        return;
+      }
+      console.log(data);
+      app();
+    }
+  );
+}
+
+cli();
+
+module.exports = cli;
